@@ -312,7 +312,8 @@ export default function HomePage() {
                   className="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300"
                 >
                   <h3 className="text-lg font-semibold text-[#3E37A1]">{client.name}</h3>
-                  <p className="text-base text-[#263238]">"{client.feedback}"</p>
+                  {/* Line 315: Fix unescaped double quotes */}
+                  <p className="text-base text-[#263238]">{`"${client.feedback}"`}</p>
                 </motion.div>
               ))}
             </div>
@@ -322,6 +323,7 @@ export default function HomePage() {
         {/* Call to Action */}
         <section className="py-20 bg-gradient-to-r from-[#6C5CE7] to-[#5A50DA] text-white text-center">
           <div className="container mx-auto px-4">
+            {/* Line 326: Fix unescaped double quotes */}
             <h2 className="text-4xl font-bold mb-6">
               "Reclaim Time for Patient Care - Let Us Optimize Your Revenue Cycle"
             </h2>

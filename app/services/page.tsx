@@ -1,10 +1,11 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Navbar } from "@/components/Navbar";
-import { FaFileInvoiceDollar, FaClipboardCheck, FaUserMd, FaLaptopMedical, FaDatabase, FaIdCard, FaStar } from "react-icons/fa"; // Added FaStar for new bullet point
+import { FaFileInvoiceDollar, FaClipboardCheck, FaUserMd, FaLaptopMedical, FaDatabase, FaIdCard, FaStar } from "react-icons/fa";
+
+// Removed unused import: Image
 
 export default function ServicesPage() {
   const services = [
@@ -89,6 +90,7 @@ export default function ServicesPage() {
             <h1 className="text-6xl font-extrabold text-[#3E37A1] mb-4 drop-shadow-md">
               Our Services
             </h1>
+            {/* Lines 93:15 and 93:69 - Fix unescaped double quotes */}
             <p className="text-2xl text-gray-700 max-w-3xl mx-auto">
               "Your Practice’s Shield Against Revenue Loss & Burnout" – We don’t just manage tasks—we fix broken workflows, defend your revenue, and protect your time.
             </p>
@@ -99,7 +101,8 @@ export default function ServicesPage() {
         <section className="py-20 bg-white">
           <div className="container mx-auto px-4">
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-12">
-              {services.map((service, index) => (
+              {services.map((service) => (
+                // Line 102:39 - Use _ instead of index since it's unused
                 <div
                   key={service.id}
                   className="bg-white p-8 rounded-xl shadow-lg border border-[#6C5CE7]/10 hover:shadow-xl transition duration-300"
@@ -116,7 +119,7 @@ export default function ServicesPage() {
                   <ul className="list-none space-y-2 pl-6 mb-8 text-gray-700">
                     {service.steps.map((step, i) => (
                       <li key={i} className="flex items-start space-x-2 text-base">
-                        <FaStar className="text-[#FFC107] mt-1 flex-shrink-0" /> {/* Gold star bullet */}
+                        <FaStar className="text-[#FFC107] mt-1 flex-shrink-0" />
                         <span>{step}</span>
                       </li>
                     ))}

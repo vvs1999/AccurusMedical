@@ -7,7 +7,7 @@ import { useState } from "react";
 
 export function Navbar() {
   const [open, setOpen] = useState(false);
-  const pathname = usePathname();
+  // Removed unused pathname variable from Navbar
 
   return (
     <header>
@@ -69,7 +69,7 @@ export function Navbar() {
 }
 
 function NavLink({ href, text }: { href: string; text: string }) {
-  const pathname = usePathname();
+  const pathname = usePathname(); // Moved usePathname() here
   const isActive = pathname === href;
 
   return (
