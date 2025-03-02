@@ -1,360 +1,356 @@
-import Image from "next/image"
-import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
+"use client";
+
+import { Navbar } from "@/components/Navbar";
+import Image from "next/image";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { FaHeartbeat, FaCog, FaChartLine, FaUserMd, FaXRay, FaBrain, FaLungs, FaStethoscope, FaUsers, FaCheckCircle, FaMoneyBillWave, FaShieldAlt } from "react-icons/fa";
+import { motion } from "framer-motion";
 
 export default function HomePage() {
+  const specialties = [
+    "Orthopedic Surgery",
+    "General Surgery",
+    "Ophthalmology",
+    "ENT",
+    "Anesthesiology",
+    "Cardiology",
+    "Neurology",
+    "Endocrinology",
+    "Rheumatology",
+    "Nephrology",
+    "Oncology",
+    "Radiology",
+    "Pulmonology",
+    "Gastroenterology",
+    "Dermatology",
+    "Urology",
+    "Family Practice",
+    "Internal Medicine",
+    "Pediatrics",
+    "OB/GYN",
+    "Psychiatry",
+    "Chiropractic",
+    "Pain Management",
+    "Urgent Care",
+    "Physical Therapy",
+    "and More",
+  ];
+
+  const getIconForSpecialty = (specialty: string) => {
+    switch (specialty) {
+      case "Orthopedic Surgery":
+        return <FaUserMd className="text-xl" />;
+      case "General Surgery":
+        return <FaStethoscope className="text-xl" />;
+      case "Ophthalmology":
+        return <FaXRay className="text-xl" />;
+      case "ENT":
+        return <FaLungs className="text-xl" />;
+      case "Anesthesiology":
+        return <FaHeartbeat className="text-xl" />;
+      case "Cardiology":
+        return <FaHeartbeat className="text-xl" />;
+      case "Neurology":
+        return <FaBrain className="text-xl" />;
+      case "Endocrinology":
+        return <FaChartLine className="text-xl" />;
+      case "Rheumatology":
+        return <FaUserMd className="text-xl" />;
+      case "Nephrology":
+        return <FaUserMd className="text-xl" />;
+      case "Oncology":
+        return <FaUserMd className="text-xl" />;
+      case "Radiology":
+        return <FaXRay className="text-xl" />;
+      case "Pulmonology":
+        return <FaLungs className="text-xl" />;
+      case "Gastroenterology":
+        return <FaUserMd className="text-xl" />;
+      case "Dermatology":
+        return <FaUserMd className="text-xl" />;
+      case "Urology":
+        return <FaUserMd className="text-xl" />;
+      case "Family Practice":
+        return <FaUsers className="text-xl" />;
+      case "Internal Medicine":
+        return <FaStethoscope className="text-xl" />;
+      case "Pediatrics":
+        return <FaUserMd className="text-xl" />;
+      case "OB/GYN":
+        return <FaUserMd className="text-xl" />;
+      case "Psychiatry":
+        return <FaBrain className="text-xl" />;
+      case "Chiropractic":
+        return <FaUserMd className="text-xl" />;
+      case "Pain Management":
+        return <FaUserMd className="text-xl" />;
+      case "Urgent Care":
+        return <FaHeartbeat className="text-xl" />;
+      case "Physical Therapy":
+        return <FaUserMd className="text-xl" />;
+      case "and More":
+        return <FaCog className="text-xl" />;
+      default:
+        return <FaUserMd className="text-xl" />;
+    }
+  };
+
   return (
-    <div className="flex flex-col min-h-screen">
-      {/* Navigation (Sticky Header) */}
-      <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-        <div className="container flex h-16 items-center justify-between">
-          <Link href="/" className="flex items-center space-x-2">
-            <Image src="/logo.jpg" alt="Celestimed Logo" width={32} height={32} />
-            <span className="font-bold text-xl">Celestimed</span>
-          </Link>
-          <nav className="hidden md:flex items-center space-x-6">
-            <Link href="/" className="text-sm font-medium hover:text-primary">
-              Home
-            </Link>
-            <Link href="/services" className="text-sm font-medium hover:text-primary">
-              Services
-            </Link>
-            <Link href="/pricing" className="text-sm font-medium hover:text-primary">
-              Pricing
-            </Link>
-            <Link href="/about" className="text-sm font-medium hover:text-primary">
-              About
-            </Link>
-            <Link href="/contact" className="text-sm font-medium hover:text-primary">
-              Contact
-            </Link>
-          </nav>
-          <Button asChild className="hidden md:inline-flex">
-            <Link href="/contact">Get a Free Audit</Link>
-          </Button>
-          <Button variant="outline" size="icon" className="md:hidden">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <line x1="3" x2="21" y1="6" y2="6" />
-              <line x1="3" x2="21" y1="12" y2="12" />
-              <line x1="3" x2="21" y1="18" y2="18" />
-            </svg>
-            <span className="sr-only">Toggle menu</span>
-          </Button>
-        </div>
-      </header>
+    <div className="min-h-screen flex flex-col bg-[#F5F5FC]">
+      <Navbar />
 
       <main className="flex-grow">
-        {/* Hero Section */}
-        <section className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white py-20">
-          <div className="container mx-auto px-4">
-            <div className="max-w-3xl mx-auto text-center">
-              <h1 className="text-4xl font-bold mb-4">Hassle-Free Medical Billing for Clinics & Physicians</h1>
-              <p className="text-xl mb-8">
-                Reduce Claim Denials, Maximize Revenue, and Focus on Patient Care While We Handle Your Billing
+        {/* Hero Section with Animation */}
+        <section
+          className="relative bg-cover bg-center text-white py-24"
+          style={{
+            backgroundImage: "url('/images/about.webp')",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
+        >
+          <div className="container mx-auto px-4 flex justify-start items-center relative">
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              className="md:w-1/2 p-8 relative z-10"
+              style={{
+                background: "rgba(30, 30, 70, 0.6)",
+                borderRadius: "10px",
+                backdropFilter: "blur(4px)",
+              }}
+            >
+              <h1 className="text-5xl font-extrabold mb-6 leading-tight">
+                Transform Your Revenue Cycle with Efficient, Integrated Solutions
+              </h1>
+              <p className="text-lg mb-8 opacity-90">
+                At AccurusBill, we empower independent physicians and clinics to streamline operations, reduce administrative burdens, and maximize revenue.
               </p>
-              <div className="flex justify-center space-x-4">
-                <Button size="lg" asChild className="bg-white text-blue-600 hover:bg-blue-50">
-                  <Link href="/contact">Get a Free Billing Audit</Link>
-                </Button>
-                <Button size="lg" variant="outline" className="text-white border-white hover:bg-white/10">
-                  Schedule a Call
-                </Button>
-              </div>
-            </div>
-            <div className="mt-12 flex justify-center space-x-6">
-              <Image src="/ramq-certified.svg" alt="RAMQ Certified" width={80} height={40} />
-              <Image src="/phipa-compliant.svg" alt="PHIPA/PIPEDA Compliant" width={80} height={40} />
-              <Image src="/private-insurance.svg" alt="Works with Private Insurance" width={80} height={40} />
-            </div>
+              <Button
+                size="lg"
+                asChild
+                className="bg-[#3E37A1] text-white font-semibold hover:bg-[#4C45C2] transition duration-300"
+              >
+                <Link href="/contact">Stop Losing Revenue—Get a Free Audit Now!</Link>
+              </Button>
+            </motion.div>
           </div>
         </section>
 
-        {/* Key Benefits Section */}
-        <section className="py-20 bg-gray-50">
+        {/* Our Services Section */}
+        <section className="py-20 bg-white">
           <div className="container mx-auto px-4">
-            <h2 className="text-3xl font-bold text-center mb-12">Why Choose Us?</h2>
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <h2 className="text-4xl font-bold text-center mb-6 text-[#3E37A1] relative">
+              Our Services
+              <span className="block w-24 h-1 bg-[#6C5CE7] mx-auto mt-2 rounded-full"></span>
+            </h2>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
               {[
-                { title: "Faster Payments", description: "Reduce rejected claims & get paid on time." },
-                {
-                  title: "100% RAMQ & Private Insurance Compliance",
-                  description: "Expert in Quebec healthcare billing.",
-                },
-                { title: "Seamless EMR Integration", description: "Works with Telus Health, OSCAR, ClinicAid, etc." },
-                {
-                  title: "Cost-Effective & Scalable",
-                  description: "Billing solutions for solo doctors & large clinics.",
-                },
-              ].map((benefit, index) => (
-                <div key={index} className="bg-white p-6 rounded-lg shadow-md">
-                  <h3 className="text-xl font-semibold mb-2">{benefit.title}</h3>
-                  <p className="text-gray-600">{benefit.description}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Services Overview */}
-        <section className="py-20">
-          <div className="container mx-auto px-4">
-            <h2 className="text-3xl font-bold text-center mb-12">Our Services</h2>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {[
-                { title: "Medical Billing & Claims Processing", description: "RAMQ, OHIP, Private Insurance" },
-                { title: "Medical Coding (ICD-10-CA & CPT)", description: "Ensuring Correct Claim Submissions" },
-                { title: "Prior Authorization & Insurance Verification", description: "Prevent Delays & Denials" },
-                { title: "Virtual Medical Scribing", description: "Reduce Documentation Burden for Physicians" },
-                { title: "EMR Data Entry & Management", description: "Streamline Clinic Operations" },
+                { title: "Medical Billing & Claims Submission", description: "Streamline billing processes and reduce claim denials for faster reimbursements." },
+                { title: "Medical Coding (ICD-10, CPT)", description: "Ensure accurate coding to maximize revenue and avoid compliance risks." },
+                { title: "Prior Authorization & Insurance Verification", description: "Eliminate delays with seamless insurance approvals." },
+                { title: "Virtual Medical Scribing", description: "Free up your time with real-time, accurate documentation." },
+                { title: "Medical Transcription Services", description: "Turn patient encounters into precise, actionable records." },
+                { title: "Physician Credentialing", description: "Stay credentialed and compliant without the hassle." },
               ].map((service, index) => (
-                <div
+                <motion.div
                   key={index}
-                  className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.2 }}
+                  className="bg-[#F5F5FC] p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300 border border-gray-200"
                 >
-                  <h3 className="text-xl font-semibold mb-2">{service.title}</h3>
-                  <p className="text-gray-600 mb-4">{service.description}</p>
-                  <Link
-                    href={`/services#${service.title.toLowerCase().replace(/ /g, "-")}`}
-                    className="text-blue-600 hover:underline"
-                  >
-                    Learn more
+                  <h3 className="text-xl font-semibold mb-2 text-[#3E37A1]">{service.title}</h3>
+                  <p className="text-base mb-4 text-[#263238]">{service.description}</p>
+                  <Link href={`/services#${service.title.toLowerCase().replace(/ /g, "-")}`} className="text-base font-semibold text-[#FFC107] hover:underline">
+                    Learn more →
                   </Link>
-                </div>
+                </motion.div>
               ))}
-            </div>
-            <div className="text-center mt-12">
-              <Button size="lg" asChild>
-                <Link href="/services">Explore Our Services</Link>
-              </Button>
             </div>
           </div>
         </section>
 
-        {/* How It Works */}
-        <section className="py-20 bg-gray-50">
-          <div className="container mx-auto px-4">
-            <h2 className="text-3xl font-bold text-center mb-12">How It Works</h2>
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {/* Why Choose AccurusBill Section with Animated Icons */}
+        <section className="py-20 bg-[#EEF0FF]">
+          <div className="container mx-auto px-4 text-center">
+            <h2 className="text-4xl font-bold mb-6 text-[#3E37A1] relative">
+              Why Choose AccurusBill?
+              <span className="block w-24 h-1 bg-[#6C5CE7] mx-auto mt-2 rounded-full"></span>
+            </h2>
+            <div className="grid md:grid-cols-3 gap-10 mt-8">
               {[
-                { step: 1, title: "Submit Patient & Insurance Details" },
-                { step: 2, title: "We Process, Code & Verify Claims" },
-                { step: 3, title: "Claims Submitted to RAMQ/Insurance" },
-                { step: 4, title: "You Get Paid Faster & More Efficiently" },
-              ].map((step, index) => (
+                { icon: <motion.div animate={{ rotate: 360 }} transition={{ repeat: Infinity, duration: 5, ease: "linear" }}><FaCog className="text-6xl text-[#5A50DA] mx-auto" /></motion.div>, title: "End-to-End Expertise" },
+                { icon: <motion.div animate={{ scale: [1, 1.2, 1] }} transition={{ repeat: Infinity, duration: 2 }}><FaMoneyBillWave className="text-6xl text-[#5A50DA] mx-auto" /></motion.div>, title: "Cost-Effective Solutions" },
+                { icon: <motion.div animate={{ opacity: [0.5, 1, 0.5] }} transition={{ repeat: Infinity, duration: 2 }}><FaShieldAlt className="text-6xl text-[#5A50DA] mx-auto" /></motion.div>, title: "Secure & Compliant" },
+                { icon: <motion.div animate={{ y: [0, -10, 0] }} transition={{ repeat: Infinity, duration: 2 }}><FaChartLine className="text-6xl text-[#5A50DA] mx-auto" /></motion.div>, title: "Real-Time Transparency" },
+                { icon: <motion.div animate={{ scale: [1, 1.1, 1] }} transition={{ repeat: Infinity, duration: 2 }}><FaCheckCircle className="text-6xl text-[#5A50DA] mx-auto" /></motion.div>, title: "95% Claim Acceptance" },
+                { icon: <motion.div animate={{ scale: [1, 1.05, 1] }} transition={{ repeat: Infinity, duration: 2 }}><FaUsers className="text-6xl text-[#5A50DA] mx-auto" /></motion.div>, title: "Dedicated Success Team" },
+              ].map((feature, index) => (
                 <div key={index} className="text-center">
-                  <div className="bg-blue-600 text-white w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <span className="text-xl font-bold">{step.step}</span>
-                  </div>
-                  <h3 className="text-xl font-semibold mb-2">{step.title}</h3>
+                  {feature.icon}
+                  <h3 className="text-xl font-semibold text-[#3E37A1] mt-4">{feature.title}</h3>
                 </div>
               ))}
             </div>
-            <div className="text-center mt-12">
-              <Button size="lg" asChild>
-                <Link href="/contact">Get Started Today</Link>
-              </Button>
+          </div>
+        </section>
+
+        {/* Our Process - Updated Alignment with Animated Image */}
+        <section className="py-20 bg-white">
+          <div className="container mx-auto px-4 flex flex-col lg:flex-row items-center gap-10">
+            <div className="lg:w-3/5">
+              <div className="text-center">
+                <h2 className="text-4xl font-bold text-[#3E37A1] mb-2">Our Process</h2>
+                <span className="block w-24 h-1 bg-[#6C5CE7] mx-auto mt-2 rounded-full"></span>
+              </div>
+              <div className="relative border-l-4 border-[#6C5CE7] pl-8 space-y-12 mt-8">
+                {[
+                  { step: "Step 1", title: "Understand Your Unique Needs", description: "We start with a free, no-obligation consultation to audit your workflows, pinpoint revenue leaks, and craft a custom roadmap." },
+                  { step: "Step 2", title: "Seamless Onboarding & Training", description: "Our team integrates with your EHR/EMR systems and trains your staff—zero downtime, zero hassle." },
+                  { step: "Step 3", title: "Proactive Revenue Cycle Management", description: "We take over billing, coding, and prior authorizations while you track progress via real-time dashboards." },
+                  { step: "Step 4", title: "Continuous Optimization & Support", description: "Monthly performance reviews, 24/7 support, and updates to keep your practice ahead of compliance changes." },
+                ].map((item, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, x: -50 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, delay: index * 0.2 }}
+                    className="mb-6"
+                  >
+                    <h3 className="text-2xl font-semibold text-[#3E37A1]">
+                      {item.step}: {item.title}
+                    </h3>
+                    <p className="text-gray-700 mt-2 leading-relaxed">{item.description}</p>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+            <motion.div
+              className="lg:w-2/5"
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1, ease: "easeOut" }}
+            >
+              <motion.div
+                animate={{ scale: [1, 1.05, 1] }}
+                transition={{ repeat: Infinity, duration: 4 }}
+                className="shadow-lg rounded-lg overflow-hidden"
+              >
+                <Image
+                  src="/images/process.jpg"
+                  alt="Our Process"
+                  width={500}
+                  height={600}
+                  className="rounded-lg"
+                />
+              </motion.div>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* We Serve Section with Single Continuous Scrolling Line */}
+        <section className="py-20 bg-gradient-to-r from-[#6C5CE7] to-[#5A50DA] text-white overflow-hidden relative">
+          <div className="container mx-auto px-4 text-center">
+            <h2 className="text-4xl font-bold mb-6 text-white relative">
+              We Serve
+              <span className="block w-24 h-1 bg-[#FFC107] mx-auto mt-2 rounded-full"></span>
+            </h2>
+            <p className="text-lg mb-10 text-white opacity-90">
+              Supporting a wide range of medical specialties with tailored solutions.
+            </p>
+            <div className="relative">
+              <motion.div
+                className="flex whitespace-nowrap gap-6"
+                animate={{ x: ["100%", "-100%"] }}
+                transition={{ repeat: Infinity, duration: 30, ease: "linear" }}
+              >
+                {specialties.map((spec, index) => (
+                  <div
+                    key={index}
+                    className="flex items-center bg-white text-[#3E37A1] rounded-full px-4 py-2 shadow-lg hover:bg-[#FFC107] hover:text-white transition duration-300 cursor-pointer"
+                  >
+                    <span className="mr-2">{getIconForSpecialty(spec)}</span>
+                    <span className="text-base font-semibold">{spec}</span>
+                  </div>
+                ))}
+                {/* Duplicate the list to ensure seamless looping */}
+                {specialties.map((spec, index) => (
+                  <div
+                    key={`duplicate-${index}`}
+                    className="flex items-center bg-white text-[#3E37A1] rounded-full px-4 py-2 shadow-lg hover:bg-[#FFC107] hover:text-white transition duration-300 cursor-pointer"
+                  >
+                    <span className="mr-2">{getIconForSpecialty(spec)}</span>
+                    <span className="text-base font-semibold">{spec}</span>
+                  </div>
+                ))}
+              </motion.div>
             </div>
           </div>
         </section>
 
-        {/* Testimonials & Social Proof */}
-        <section className="py-20">
+        {/* Client Reviews Section */}
+        <section className="py-20 bg-[#F5F5FC]">
           <div className="container mx-auto px-4">
-            <h2 className="text-3xl font-bold text-center mb-12">What Our Clients Say</h2>
-            <div className="max-w-4xl mx-auto">
-              <div className="bg-white p-8 rounded-lg shadow-md mb-8">
-                <p className="text-xl italic mb-4">
-                  "We recovered 20% more revenue after switching to Celestimed – Highly Recommend!"
-                </p>
-                <p className="font-semibold">- Dr. Smith, Montreal Clinic</p>
-              </div>
-              <div className="bg-white p-8 rounded-lg shadow-md">
-                <p className="text-xl italic mb-4">
-                  "Billing errors dropped to near zero, and our team now focuses on patient care."
-                </p>
-                <p className="font-semibold">- Family Practice Owner, Quebec</p>
-              </div>
+            <h2 className="text-4xl font-bold text-center mb-12 text-[#3E37A1] relative">
+              What Our Clients Say
+              <span className="block w-24 h-1 bg-[#6C5CE7] mx-auto mt-2 rounded-full"></span>
+            </h2>
+            <div className="grid md:grid-cols-2 gap-10">
+              {[
+                { name: "Dr. Emily Carter", feedback: "AccurusBill streamlined our billing process and improved revenue significantly." },
+                { name: "Clinic Administrator", feedback: "Our clinic experienced fewer claim denials thanks to their expert team." },
+              ].map((client, index) => (
+                <motion.div
+                  key={index}
+                  whileHover={{ scale: 1.05 }}
+                  className="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300"
+                >
+                  <h3 className="text-lg font-semibold text-[#3E37A1]">{client.name}</h3>
+                  <p className="text-base text-[#263238]">"{client.feedback}"</p>
+                </motion.div>
+              ))}
             </div>
           </div>
         </section>
 
-        {/* Lead Capture (Inquiry Form) */}
-        <section className="py-20 bg-gray-50">
+        {/* Call to Action */}
+        <section className="py-20 bg-gradient-to-r from-[#6C5CE7] to-[#5A50DA] text-white text-center">
           <div className="container mx-auto px-4">
-            <h2 className="text-3xl font-bold text-center mb-12">Get Your Free Billing Audit</h2>
-            <form className="max-w-2xl mx-auto bg-white p-8 rounded-lg shadow-md">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                <Input type="text" placeholder="Clinic Name" required />
-                <Input type="text" placeholder="Contact Person" required />
-              </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                <Input type="email" placeholder="Email" required />
-                <Input type="tel" placeholder="Phone" required />
-              </div>
-              <div className="mb-6">
-                <select className="w-full p-2 border rounded-md" required>
-                  <option value="">Select Services Needed</option>
-                  <option value="medical-billing">Medical Billing</option>
-                  <option value="coding">Medical Coding</option>
-                  <option value="prior-auth">Prior Authorization</option>
-                  <option value="emr-management">EMR Management</option>
-                </select>
-              </div>
-              <Button type="submit" className="w-full">
-                Get Your Free Billing Audit
-              </Button>
-            </form>
+            <h2 className="text-4xl font-bold mb-6">
+              "Reclaim Time for Patient Care - Let Us Optimize Your Revenue Cycle"
+            </h2>
+            <Button
+              size="lg"
+              asChild
+              className="bg-white text-[#3E37A1] font-semibold hover:bg-[#4C45C2] hover:text-white transition duration-300"
+            >
+              <Link href="/contact">Get Started Now</Link>
+            </Button>
           </div>
         </section>
       </main>
 
       {/* Footer */}
-      <footer className="bg-gray-900 text-white py-12">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-4 gap-8">
-            <div>
-              <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
-              <ul className="space-y-2">
-                <li>
-                  <Link href="/" className="hover:text-blue-400">
-                    Home
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/services" className="hover:text-blue-400">
-                    Services
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/pricing" className="hover:text-blue-400">
-                    Pricing
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/about" className="hover:text-blue-400">
-                    About
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/contact" className="hover:text-blue-400">
-                    Contact
-                  </Link>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <h3 className="text-lg font-semibold mb-4">Services</h3>
-              <ul className="space-y-2">
-                <li>
-                  <Link href="/services#billing" className="hover:text-blue-400">
-                    Medical Billing
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/services#coding" className="hover:text-blue-400">
-                    Medical Coding
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/services#prior-auth" className="hover:text-blue-400">
-                    Prior Authorization
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/services#emr" className="hover:text-blue-400">
-                    EMR Management
-                  </Link>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <h3 className="text-lg font-semibold mb-4">Contact Us</h3>
-              <p>Phone: (XXX) XXX-XXXX</p>
-              <p>Email: info@celestimed.com</p>
-              <p>Address: 123 Medical Plaza, Montreal, QC</p>
-            </div>
-            <div>
-              <h3 className="text-lg font-semibold mb-4">Follow Us</h3>
-              <div className="flex space-x-4">
-                <a href="#" className="text-white hover:text-blue-400">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-                    <rect width="4" height="12" x="2" y="9"></rect>
-                    <circle cx="4" cy="4" r="2"></circle>
-                  </svg>
-                  <span className="sr-only">LinkedIn</span>
-                </a>
-                <a href="#" className="text-white hover:text-blue-400">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path>
-                  </svg>
-                  <span className="sr-only">Twitter</span>
-                </a>
-                <a href="#" className="text-white hover:text-blue-400">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
-                  </svg>
-                  <span className="sr-only">Facebook</span>
-                </a>
-              </div>
-            </div>
-          </div>
-          <div className="mt-8 pt-8 border-t border-gray-700 text-center">
-            <p>&copy; 2023 Celestimed. All rights reserved.</p>
-            <p className="mt-2">
-              <Link href="/privacy" className="hover:text-blue-400">
-                Privacy Policy
-              </Link>{" "}
-              |
-              <Link href="/terms" className="hover:text-blue-400 ml-2">
-                Terms of Service
-              </Link>
-            </p>
+      <footer className="bg-[#3E37A1] text-white py-12">
+        <div className="container mx-auto px-4 text-center">
+          <p className="text-base">
+            © 2024 AccurusBill. Empowering Private Clinics with Comprehensive,
+            Cost-Effective Solutions
+          </p>
+          <p>Phone: (XXX) XXX-XXXX | Email: info@AccurusBill.com</p>
+          <div className="mt-4">
+            <Link href="/">Home</Link> | <Link href="/about">About Us</Link> |{' '}
+            <Link href="/services">Services</Link> | <Link href="/blog">Blog</Link> |{' '}
+            <Link href="/contact">Contact</Link>
           </div>
         </div>
       </footer>
     </div>
-  )
+  );
 }
-

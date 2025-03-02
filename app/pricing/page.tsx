@@ -1,11 +1,11 @@
-"use client"
+"use client"; // Must be the very first line for client-side components
 
-import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { useState } from "react"
-import { Navbar } from "@/components/Navbar"
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { useState } from "react";
+import { Navbar } from "@/components/Navbar";
 
-export default function PricingPage() {
+export default function ServicesPage() {
   const pricingPlans = [
     {
       title: "Pay-Per-Claim",
@@ -46,15 +46,17 @@ export default function PricingPage() {
       color: "bg-purple-100 hover:bg-purple-200",
       borderColor: "border-purple-300",
     },
-  ]
+  ];
 
-  const [selectedPlan, setSelectedPlan] = useState(null)
+  const [selectedPlan, setSelectedPlan] = useState<number | null>(null);
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white">
       <Navbar />
       <div className="container mx-auto px-4 py-12">
-        <h1 className="text-4xl font-bold mb-4 text-center text-blue-800">Flexible & Transparent Pricing</h1>
+        <h1 className="text-4xl font-bold mb-4 text-center text-blue-800">
+          Flexible & Transparent Pricing
+        </h1>
         <p className="text-xl text-center mb-12 text-gray-600">
           Affordable billing solutions for solo practitioners, clinics, and healthcare groups.
         </p>
@@ -63,9 +65,10 @@ export default function PricingPage() {
           {pricingPlans.map((plan, index) => (
             <div
               key={index}
-              className={`${plan.color} ${
-                selectedPlan === index ? `${plan.borderColor} shadow-lg` : "border-transparent"
-              } border-2 rounded-lg p-6 flex flex-col justify-between cursor-pointer transition-all duration-300`}
+              className={`${
+                plan.color
+              } ${selectedPlan === index ? `${plan.borderColor} shadow-lg` : "border-transparent"}
+               border-2 rounded-lg p-6 flex flex-col justify-between cursor-pointer transition-all duration-300`}
               onClick={() => setSelectedPlan(index)}
             >
               <div>
@@ -79,24 +82,27 @@ export default function PricingPage() {
                   ))}
                 </ul>
               </div>
-              <Button asChild className="w-full">
-                <Link href={`/contact?plan=${encodeURIComponent(plan.title)}`}>{plan.cta}</Link>
+              <Button asChild className="w-full bg-blue-600 text-white hover:bg-blue-700">
+                <Link href={`/contact?plan=${encodeURIComponent(plan.title)}`}>
+                  {plan.cta}
+                </Link>
               </Button>
             </div>
           ))}
         </div>
 
         <div className="bg-blue-600 p-8 rounded-lg text-center text-white shadow-lg">
-          <h2 className="text-3xl font-semibold mb-6">Not Sure Which Plan Is Right for You?</h2>
+          <h2 className="text-3xl font-semibold mb-6">
+            Not Sure Which Plan Is Right for You?
+          </h2>
           <p className="text-lg mb-6">
             Our experts can help you choose the best pricing model for your healthcare practice.
           </p>
-          <Button asChild size="lg" variant="secondary">
+          <Button asChild size="lg" className="bg-white text-blue-600 hover:bg-gray-200">
             <Link href="/contact">Get a Customized Quote</Link>
           </Button>
         </div>
       </div>
     </div>
-  )
+  );
 }
-

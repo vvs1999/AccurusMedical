@@ -1,157 +1,219 @@
-"use client"
+"use client";
 
-import Image from "next/image"
-import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { useState } from "react"
-import { Navbar } from "@/components/Navbar"
+import Image from "next/image";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { useState } from "react";
+import { Navbar } from "@/components/Navbar";
+// Removed framer-motion imports (LazyMotion, m otion, AnimatePresence) and react-icons (FaHeartbeat, FaCog, etc.) since they're no longer needed
 
 export default function AboutPage() {
   const teamMembers = [
     {
-      name: "Dr. Marie Dubois",
-      role: "Founder & CEO",
-      image: "/placeholder.svg",
-      bio: "Dr. Dubois brings 15 years of experience in healthcare administration and a passion for improving medical billing processes.",
+      name: "Dr. Jane Smith",
+      role: "Chief Medical Officer",
+      image: "/images/team/sandeep.jpg",
+      bio: "Dr. Smith oversees clinical operations with over 15 years of experience in healthcare management.",
       expertise: "Healthcare Administration, Revenue Cycle Management",
-      funFact: "Completed 3 marathons in the past year",
+      funFact: "Avid hiker and nature photographer",
     },
     {
-      name: "Jean Tremblay",
-      role: "Head of Operations",
-      image: "/placeholder.svg",
-      bio: "Jean has over a decade of experience streamlining operations in healthcare organizations across Quebec.",
-      expertise: "Process Optimization, Team Management",
-      funFact: "Fluent in 5 languages",
+      name: "Michael Rodriguez",
+      role: "Head of Billing Operations",
+      image: "/images/team/Nitesh.jpg",
+      bio: "Michael leads our billing team with a decade of expertise in claims processing and denial management.",
+      expertise: "Medical Billing, Claims Advocacy",
+      funFact: "Fluent in Spanish and Portuguese",
     },
     {
-      name: "Sarah Johnson",
+      name: "Sarah Lee",
       role: "Lead Medical Coder",
-      image: "/placeholder.svg",
-      bio: "Sarah is a certified medical coder with expertise in ICD-10-CA and CPT coding systems.",
+      image: "/images/team/sandeep.jpg",
+      bio: "Sarah is a CPC-certified coder specializing in ICD-10 and CPT coding standards.",
       expertise: "Medical Coding, Compliance",
-      funFact: "Volunteers at local animal shelters on weekends",
+      funFact: "Volunteers at local coding bootcamps",
     },
     {
-      name: "Michael Chang",
+      name: "Emily Carter",
       role: "Client Success Manager",
-      image: "/placeholder.svg",
-      bio: "Michael ensures our clients receive top-notch support and achieve their revenue goals.",
-      expertise: "Customer Relations, Healthcare IT",
-      funFact: "Amateur chef specializing in fusion cuisine",
+      image: "/images/team/Nitesh.jpg",
+      bio: "Emily ensures seamless client experiences with a focus on personalized support.",
+      expertise: "Customer Relations, EHR Integration",
+      funFact: "Loves baking artisanal bread",
     },
-  ]
+  ];
 
-  const [activeTeamMember, setActiveTeamMember] = useState(null)
+  const [activeTeamMember, setActiveTeamMember] = useState<number | null>(null);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white">
+    <div className="min-h-screen bg-[#F5F5FC]">
+      {/* Navbar with Prefetch */}
       <Navbar />
-      <div className="container mx-auto px-4 py-12">
-        <h1 className="text-4xl font-bold mb-8 text-center text-blue-800">About Celestimed</h1>
 
-        <section className="mb-16 bg-white p-8 rounded-lg shadow-md">
-          <h2 className="text-3xl font-semibold mb-4 text-blue-700">Our Mission</h2>
-          <p className="text-lg mb-6 text-gray-700">
-            At Celestimed, we are dedicated to helping healthcare providers optimize their revenue cycle, minimize
-            administrative burden, and improve financial performance with expert medical billing services.
+      {/* About Header */}
+      <section className="py-32 bg-gradient-to-br from-[#6C5CE7]/20 to-[#F5F5FC] overflow-hidden">
+        <div className="container mx-auto px-6 relative z-10 text-center">
+          <h1 className="text-6xl font-extrabold text-[#3E37A1] mb-4 drop-shadow-md">
+            About AccurusBill
+            <span className="block w-32 h-1 bg-gradient-to-r from-[#6C5CE7] to-[#3E37A1] mx-auto mt-3 rounded-full"></span>
+          </h1>
+          <p className="text-2xl text-gray-700 max-w-3xl mx-auto">
+            Discover our story, mission, and team dedicated to transforming healthcare billing.
           </p>
-          <div className="grid md:grid-cols-2 gap-8">
-            <div>
-              <h3 className="text-xl font-semibold mb-4 text-blue-600">Our Core Values</h3>
-              <ul className="list-disc pl-6 text-gray-700">
-                <li className="mb-2">Accuracy & Compliance - Ensuring 100% RAMQ & insurance compliance</li>
-                <li className="mb-2">Efficiency & Speed - Faster claim approvals & reduced denials</li>
-                <li className="mb-2">Transparency - No hidden fees, clear pricing & reporting</li>
-                <li className="mb-2">Client-Centric Approach - Customized solutions for every clinic</li>
-              </ul>
-            </div>
-            <div>
-              <Image
-                src="/placeholder.svg"
-                alt="Celestimed team"
-                width={500}
-                height={300}
-                className="rounded-lg shadow-md"
-              />
-            </div>
-          </div>
-        </section>
+        </div>
+      </section>
 
-        <section className="mb-16 bg-blue-600 p-8 rounded-lg shadow-md text-white">
-          <h2 className="text-3xl font-semibold mb-4">Our Story</h2>
-          <p className="text-lg mb-6">
-            Founded in 2015, Celestimed started as a small team of medical billing experts who recognized the challenges
-            faced by healthcare providers in Quebec. We've since grown into a trusted partner for clinics across Canada,
-            helping them navigate the complexities of medical billing and revenue cycle management.
+      {/* Our Story Section */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-6">
+          <h2 className="text-3xl font-semibold mb-8 text-[#3E37A1]">
+            Our Story
+          </h2>
+          <div className="text-lg text-gray-700 text-justify leading-relaxed max-w-4xl mx-auto">
+            <p className="mb-6">
+              <strong>Born from Healthcare’s Hidden Crisis: Empowering Clinics, Practices, and Physicians to Focus on Healing</strong>
+            </p>
+            <p>
+              Behind every thriving clinic and dedicated doctor lies a hidden battle: time stolen by paperwork, not patients. Denied claims. Payer delays. Credentialing red tape. Burnout. Why should clinics and medical teams—the heart of personalized care—waste their expertise on administrative chaos?
+            </p>
+            <p className="mt-4">
+              AccurusBill was created to end this crisis. We replaced fragmented tools and indifferent vendors with a unified partner for billing, coding, transcription, and credentialing—so private clinics, IPPs, and solo practitioners can reclaim their time, revenue, and passion for medicine.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Mission & Vision Section */}
+      <section className="py-20 bg-gradient-to-r from-[#6C5CE7] to-[#5A50DA] text-white">
+        <div className="container mx-auto px-6 grid md:grid-cols-2 gap-12">
+          <div className="p-8 bg-white/10 rounded-xl">
+            <h2 className="text-3xl font-semibold mb-4">Our Mission</h2>
+            <p className="text-lg text-justify">
+              To empower private clinics, independent practices, and solo providers with certified expertise, relentless advocacy, and seamless workflows—freeing them from administrative chaos to reclaim time for patient care and practice growth.
+            </p>
+          </div>
+          <div className="p-8 bg-white/10 rounded-xl">
+            <h2 className="text-3xl font-semibold mb-4">Our Vision</h2>
+            <p className="text-lg text-justify">
+              To redefine the future of private healthcare by building a world where clinics thrive—not survive—through compliance-first revenue cycles, measurable financial success, and a system that finally works for providers, not against them.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Our Values Section */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-6">
+          <h2 className="text-3xl font-semibold mb-8 text-[#3E37A1]">
+            Our Values
+          </h2>
+          <p className="text-lg mb-8 text-gray-700 text-center">
+            <strong>The Pillars That Define Us - and Protect Your Practice</strong>
           </p>
-          <div className="bg-white p-6 rounded-lg text-blue-800">
-            <h3 className="text-xl font-semibold mb-4">Celestimed by the Numbers</h3>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              <div className="text-center">
-                <p className="text-3xl font-bold text-blue-600">500+</p>
-                <p>Healthcare Providers Served</p>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              { title: "Uncompromising Integrity", desc: "We fight for your financial health with certified expertise—never cutting corners, never sacrificing compliance. Every claim we submit is audited, every action HIPAA-guarded." },
+              { title: "Radical Transparency", desc: "No hidden fees, no jargon, no surprises. Real-time dashboards, monthly audits, and 24/7 access to your revenue cycle data—because your trust is non-negotiable." },
+              { title: "Relentless Efficiency", desc: "We don’t just streamline workflows—we obliterate delays. From same-day claims submission to 48-hour prior authorizations, speed is our weapon against revenue loss." },
+              { title: "Bold Innovation", desc: "We evolve faster than payer rules change. Custom EHR integrations, denial prediction analytics, and future-proof tools keep you ahead in a shifting landscape." },
+              { title: "Partnership-First Success", desc: "Your wins are ours. We assign dedicated account managers, tailor workflows to your specialty, and measure success by your growth—not our profits." },
+              { title: "Fierce Advocacy", desc: "We battle denied claims, opaque payers, and bureaucratic red tape so you don’t have to. Your fight is our fight—period." },
+            ].map((value, index) => (
+              <div
+                key={index}
+                className="bg-[#F5F5FC] p-6 rounded-xl shadow-md transition duration-300 hover:shadow-lg"
+              >
+                <h3 className="text-xl font-semibold mb-2 text-[#3E37A1]">{value.title}</h3>
+                <p className="text-base text-gray-700 text-justify">{value.desc}</p>
               </div>
-              <div className="text-center">
-                <p className="text-3xl font-bold text-blue-600">98%</p>
-                <p>Claim Approval Rate</p>
-              </div>
-              <div className="text-center">
-                <p className="text-3xl font-bold text-blue-600">30%</p>
-                <p>Average Revenue Increase</p>
-              </div>
-              <div className="text-center">
-                <p className="text-3xl font-bold text-blue-600">24/7</p>
-                <p>Support Available</p>
-              </div>
-            </div>
+            ))}
           </div>
-        </section>
+        </div>
+      </section>
 
-        <section className="mb-16">
-          <h2 className="text-3xl font-semibold mb-8 text-center text-blue-800">Meet Our Team</h2>
+      {/* Our Team Section */}
+      <section className="py-20 bg-[#EEF0FF]">
+        <div className="container mx-auto px-6">
+          <h2 className="text-3xl font-semibold mb-8 text-center text-[#3E37A1]">
+            Our Team
+          </h2>
+          <p className="text-lg mb-10 text-gray-700 text-justify max-w-4xl mx-auto">
+            At AccurusBill, our team is the heartbeat of your practice’s success. Composed of CPC-certified coders, CPB-accredited billing specialists, HIPAA-trained transcriptionists, and credentialing experts with 10+ years in payer enrollment, we combine deep technical expertise with relentless advocacy. Trusted by clinics nationwide, we’re your partners in reclaiming the joy of medicine.
+          </p>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {teamMembers.map((member, index) => (
               <div
                 key={index}
-                className="bg-white p-6 rounded-lg shadow-md cursor-pointer transition-all duration-300 hover:shadow-lg"
+                className="bg-white p-6 rounded-xl shadow-md cursor-pointer transition-all duration-300 hover:shadow-lg"
                 onClick={() => setActiveTeamMember(activeTeamMember === index ? null : index)}
               >
                 <Image
                   src={member.image || "/placeholder.svg"}
                   alt={member.name}
-                  width={200}
-                  height={200}
-                  className="rounded-full mx-auto mb-4"
+                  width={160}
+                  height={160}
+                  loading="lazy" // Lazy-load images
+                  quality={80} // Optimize image quality
+                  className="rounded-full object-cover w-40 h-40 mx-auto border-4 border-[#6C5CE7] shadow-md"
+                  onError={({ currentTarget }) => {
+                    currentTarget.src = "/placeholder.svg";
+                  }} // Fallback for missing images
                 />
-                <h3 className="text-xl font-semibold text-blue-700">{member.name}</h3>
-                <p className="text-gray-600">{member.role}</p>
+                <h3 className="text-xl font-semibold text-[#3E37A1] text-center mt-4">{member.name}</h3>
+                <p className="text-gray-600 text-center">{member.role}</p>
                 {activeTeamMember === index && (
-                  <div className="mt-4 text-left">
-                    <p className="mb-2 text-gray-700">
-                      <strong>Bio:</strong> {member.bio}
-                    </p>
-                    <p className="mb-2 text-gray-700">
-                      <strong>Expertise:</strong> {member.expertise}
-                    </p>
-                    <p className="text-gray-700">
-                      <strong>Fun fact:</strong> {member.funFact}
-                    </p>
+                  <div className="mt-4 text-left text-gray-700 text-sm">
+                    <p className="mb-2"><strong>Bio:</strong> {member.bio}</p>
+                    <p className="mb-2"><strong>Expertise:</strong> {member.expertise}</p>
+                    <p><strong>Fun Fact:</strong> {member.funFact}</p>
                   </div>
                 )}
               </div>
             ))}
           </div>
-        </section>
-
-        <div className="text-center bg-blue-600 p-8 rounded-lg shadow-lg text-white">
-          <h2 className="text-3xl font-semibold mb-6">Ready to Optimize Your Medical Billing?</h2>
-          <Button asChild size="lg" variant="secondary">
-            <Link href="/contact">Get Started with Celestimed</Link>
-          </Button>
         </div>
-      </div>
-    </div>
-  )
-}
+      </section>
 
+      {/* Get in Touch Section */}
+      <section className="py-20 bg-gradient-to-r from-[#6C5CE7] to-[#5A50DA] text-white text-center">
+        <div className="container mx-auto px-6">
+          <h2 className="text-4xl font-semibold mb-6">
+            Get in Touch
+          </h2>
+          <p className="text-lg mb-8 max-w-2xl mx-auto text-justify">
+            At AccurusBill, we are committed to helping your clinic thrive. Ready to streamline your operations and boost your revenue? Contact us today to learn more about how we can help your practice succeed.
+          </p>
+          <div>
+            <Button
+              asChild
+              size="lg"
+              className="bg-[#FFC107] text-[#3E37A1] font-semibold hover:bg-[#FFD700] transition duration-300 shadow-md"
+            >
+              <Link href="/contact">Contact Us</Link>
+            </Button>
+          </div>
+          <p className="text-base mt-6">
+            Email: <a href="mailto:info@accurusbill.com" className="underline hover:text-[#FFD700]">info@accurusbill.com</a>
+          </p>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="bg-[#3E37A1] text-white py-12 mt-12">
+        <div className="container mx-auto px-6 text-center">
+          <p className="text-base">
+            © 2024 AccurusBill. Empowering Private Clinics with Comprehensive, Cost-Effective Solutions
+          </p>
+          <p className="mt-2">Phone: (XXX) XXX-XXXX | Email: info@accurusbill.com</p>
+          <div className="mt-4 space-x-4">
+            <Link href="/" prefetch={true} className="hover:text-[#FFC107]">Home</Link>
+            <Link href="/about" prefetch={true} className="hover:text-[#FFC107]">About Us</Link>
+            <Link href="/services" prefetch={true} className="hover:text-[#FFC107]">Services</Link>
+            <Link href="/blog" prefetch={true} className="hover:text-[#FFC107]">Blog</Link>
+            <Link href="/contact" prefetch={true} className="hover:text-[#FFC107]">Contact</Link>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+}

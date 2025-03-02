@@ -7,33 +7,44 @@ import { useState } from "react";
 
 export function Navbar() {
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
 
   return (
     <header>
-      <nav className="sticky top-0 z-50 w-full border-b bg-white shadow-sm">
-        <div className="container flex h-16 items-center justify-between px-4 md:px-8">
+      <nav className="sticky top-0 z-50 w-full border-b border-[#6C5CE7]/20 bg-white/95 backdrop-blur-md shadow-lg">
+        <div className="container mx-auto flex h-20 items-center justify-between px-4 md:px-8">
           {/* Logo Section */}
-          <div className="flex items-center space-x-3">
-            <Link href="/" className="flex items-center space-x-2">
+          <div className="flex items-center space-x-4">
+            <Link href="/" className="flex items-center space-x-3 transition-transform duration-300 hover:scale-105">
               <Image
-                src={process.env.NEXT_PUBLIC_BASE_PATH ? `${process.env.NEXT_PUBLIC_BASE_PATH}/logo.jpg` : "/logo.jpg"}
-                alt="Celestimed Logo"
-                width={50}
-                height={50}
+                src="/logo.jpg"
+                alt="AccurusBill Logo"
+                width={60}
+                height={60}
                 priority
+                quality={80}
+                className="rounded-full shadow-md"
               />
-              <span className="text-lg font-bold whitespace-nowrap">Celestimed</span>
+              <span className="text-2xl font-bold text-[#3E37A1] whitespace-nowrap tracking-wide">AccurusBill</span>
             </Link>
           </div>
 
-          {/* Mobile Menu Button */}
-          <button onClick={() => setOpen(!open)} className="md:hidden text-black text-2xl">
-            ☰
+          {/* Mobile Menu Button (Dynamic Hamburger) */}
+          <button
+            onClick={() => setOpen(!open)}
+            className="md:hidden p-2 text-[#3E37A1] focus:outline-none focus:ring-2 focus:ring-[#6C5CE7] transition-transform duration-300 hover:scale-110"
+            aria-label={open ? "Close menu" : "Open menu"}
+          >
+            <span className="text-3xl">☰</span>
           </button>
 
-          {/* Navigation Links */}
-          <div className={`absolute md:static top-16 left-0 w-full md:w-auto bg-white md:bg-transparent shadow-md md:shadow-none transition-all duration-300 ease-in-out ${open ? "block" : "hidden"} md:flex md:items-center md:space-x-6`}>
-            <ul className="flex flex-col md:flex-row md:space-x-6 text-center md:text-left">
+          {/* Navigation Links (Desktop & Mobile) */}
+          <div
+            className={`absolute md:static top-20 left-0 w-full md:w-auto bg-white/95 md:bg-transparent shadow-xl md:shadow-none transition-all duration-500 ease-in-out transform ${
+              open ? "max-h-[100vh] opacity-100 translate-y-0" : "max-h-0 opacity-0 -translate-y-4"
+            } md:max-h-none md:opacity-100 md:translate-y-0 overflow-hidden md:flex md:items-center md:space-x-8`}
+          >
+            <ul className="flex flex-col md:flex-row md:space-x-8 text-center md:text-left p-4 md:p-0">
               <NavLink href="/" text="Home" />
               <NavLink href="/services" text="Services" />
               <NavLink href="/pricing" text="Pricing" />
@@ -42,11 +53,11 @@ export function Navbar() {
             </ul>
           </div>
 
-          {/* Free Audit Button */}
+          {/* Free Audit Button (Dynamic, Attractive) */}
           <div className="hidden md:block">
             <Link
               href="/free-audit"
-              className="bg-black text-white px-4 py-2 rounded-md hover:bg-gray-800 whitespace-nowrap"
+              className="bg-[#6C5CE7] text-white px-6 py-3 rounded-lg shadow-md hover:bg-[#3E37A1] hover:shadow-lg transition-all duration-300 transform hover:scale-105 whitespace-nowrap font-semibold text-lg"
             >
               Get a Free Audit
             </Link>
@@ -57,20 +68,20 @@ export function Navbar() {
   );
 }
 
-// NavLink Component for Highlighting Active Page
-const NavLink = ({ href, text }: { href: string; text: string }) => {
-  const pathname = usePathname(); // Get current route
+function NavLink({ href, text }: { href: string; text: string }) {
+  const pathname = usePathname();
+  const isActive = pathname === href;
 
   return (
-    <li className="md:inline-block text-center py-2 md:py-0">
+    <li className="md:inline-block text-center py-3 md:py-0">
       <Link
         href={href}
-        className={`block px-4 py-2 text-gray-700 hover:text-black ${
-          pathname === href ? "font-bold border-b-2 border-blue-500 bg-gray-100 rounded-md" : ""
+        className={`block px-4 py-2 text-gray-700 hover:text-[#3E37A1] hover:bg-[#F5F5FC]/50 rounded-md transition-all duration-300 ${
+          isActive ? "font-bold text-[#6C5CE7] border-b-2 border-[#6C5CE7] bg-[#F5F5FC]/70" : ""
         }`}
       >
         {text}
       </Link>
     </li>
   );
-};
+}
